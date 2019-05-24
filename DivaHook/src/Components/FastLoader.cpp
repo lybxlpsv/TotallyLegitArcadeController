@@ -1,6 +1,8 @@
 #include "FastLoader.h"
 #include "../Constants.h"
 #include <stdio.h>
+#include <iostream>
+#include <Windows.h>
 
 namespace DivaHook::Components
 {

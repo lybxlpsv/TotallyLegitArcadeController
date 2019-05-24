@@ -13,6 +13,9 @@ namespace DivaHook
 		static const wchar_t* DivaWindowName;
 		static const wchar_t* GlutDefaultName;
 
+		static int fpsLimit;
+		static int fpsLimitSet;
+
 		static HWND DivaWindowHandle;
 		static HMODULE Module;
 

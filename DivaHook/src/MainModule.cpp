@@ -13,6 +13,9 @@ namespace DivaHook
 	HWND MainModule::DivaWindowHandle;
 	HMODULE MainModule::Module;
 
+	int MainModule::fpsLimit = 0;
+	int MainModule::fpsLimitSet = 0;
+
 	std::string MainModule::GetModuleDirectory()
 	{
 		if (moduleDirectory == nullptr)

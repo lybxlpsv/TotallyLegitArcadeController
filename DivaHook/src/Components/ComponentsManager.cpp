@@ -7,6 +7,8 @@
 #include "FrameRateManager.h"
 #include "StageManager.h"
 #include "FastLoader.h"
+#include "GLComponent.h"
+#include "ScaleComponent.h"
 #include "../FileSystem/ConfigFile.h"
 #include "../MainModule.h"
 #include "../Constants.h"
@@ -37,6 +39,8 @@ namespace DivaHook::Components
 			new FrameRateManager(),
 			new StageManager(),
 			new FastLoader(),
+			new ScaleComponent(),
+			new GLComponent(),
 		};
 
 		ConfigFile componentsConfig(MainModule::GetModuleDirectory(), COMPONENTS_CONFIG_FILE_NAME);

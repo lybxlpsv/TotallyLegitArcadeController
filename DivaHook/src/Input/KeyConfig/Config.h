@@ -16,6 +16,7 @@ namespace DivaHook::Input::KeyConfig
 	public:
 		static KeycodeMap Keymap;
 		static Ds4ButtonMap Ds4Map;
+		static KeycodeMap XinputMap;
 
 		static void BindConfigKeys(std::unordered_map<std::string, std::string> &configMap, const char *configKeyName, Binding &bindObj, std::vector<std::string> defaultKeys);
 	};

@@ -17,6 +17,26 @@ char waitDisplayStrings[8][6] =
 	".o...",
 };
 
+HANDLE Startpausedprocess(char* cmd, PHANDLE ptr_thread) // cleaned up a bit, but no RAII
+{
+	if (ptr_thread == nullptr) return nullptr;
+
+	PROCESS_INFORMATION pi;
+	STARTUPINFOA si{}; // initialize with zeroes.
+	si.cb = sizeof(STARTUPINFOA);
+
+	if (!CreateProcessA(nullptr, cmd, nullptr, nullptr, false, CREATE_SUSPENDED,
+		nullptr, nullptr, std::addressof(si), std::addressof(pi)))
+	{
+		std::cerr << "CreateProcess failed, " << GetLastError() << '\n';
+		*ptr_thread = nullptr;
+		return nullptr;
+	}
+
+	*ptr_thread = pi.hThread;
+	return pi.hProcess;
+}
+
 int GetDirectorySeperatorPosition(std::string path)
 {
 	for (int i = path.size() - 1; i >= 0; i--)
@@ -52,8 +72,9 @@ void PrintProgramInfo()
 	printf("// -- DEBUG_BUILD: --\n//\n");
 #endif
 
-	printf("// Totally Legit Arcade Controller (TLAC)			\n");
-	printf("//													\n");
+	printf("// Totally Legit Arcade Controller (TLAC) (Fork)	\n");
+	printf("// !UNOFFICIAL VERSION! DO NOT ASK ORIGINAL			\n");
+	printf("//       MAINTAINER/samyuu FOR SUPPORT!				\n");
 	printf("// v.%s                            -by samyuu       \n", TLAC_VERSION);
 	printf("// -------------------------------------------------\n");
 }
@@ -65,7 +86,7 @@ COORD GetConsoleCursorPosition(HANDLE hConsoleOutput)
 	return cbsi.dwCursorPosition;
 }
 
-void WaitExit(int duration = 6000, int iterations = 32 + 1)
+void WaitExit(int duration = 1000, int iterations = 32 + 1)
 {
 	DWORD interval = duration / iterations;
 
@@ -120,9 +141,35 @@ int main(int argc, char** argv)
 
 	if (!result)
 	{
-		printf("main(): Injection failed. Press enter to exit...");
-		std::cin.get();
-		return EXIT_FAILURE;
+		printf("main(): Injection failed. Launching...\n");
+
+		char buffer[256];
+		for (int i = 1; i < argc; ++i)
+		{
+			if (i == 1)
+				strncpy_s(buffer, argv[i], sizeof(buffer));
+			else strncat_s(buffer, argv[i], sizeof(buffer));
+		}
+		printf(buffer);
+		HANDLE thread = nullptr;
+		auto process = Startpausedprocess(buffer, std::addressof(thread));
+		SetPriorityClass(process, 0x00000080);
+		bool result = injector.InjectDll(DIVA_PROCESS_NAME, dllPath);
+		if (!result)
+		{
+			printf("main(): Injection failed. Exiting...");
+			return EXIT_FAILURE;
+		}
+
+		printf("main(): Exiting ");
+
+		WaitExit();
+
+		ResumeThread(thread);
+
+		//CloseHandle(thread);
+		//CloseHandle(process);
+		//std::cin.get();
 	}
 
 	printf("main(): Exiting ");

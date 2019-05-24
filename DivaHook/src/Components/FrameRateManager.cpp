@@ -3,6 +3,7 @@
 #include "GameState.h"
 #include <stdio.h>
 #include <windows.h>
+#include "../MainModule.h"
 
 namespace DivaHook::Components
 {
@@ -35,7 +36,11 @@ namespace DivaHook::Components
 
 	void FrameRateManager::Update()
 	{
-		float frameRate = RoundFrameRate(GetGameFrameRate());
+		float frameRate = 0.0f;
+		if (DivaHook::MainModule::fpsLimit != 0) {
+			frameRate = DivaHook::MainModule::fpsLimit;
+		} else
+		frameRate = RoundFrameRate(GetGameFrameRate());
 
 		*aetFrameDuration = 1.0f / frameRate;
 		*pvFrameRate = frameRate;

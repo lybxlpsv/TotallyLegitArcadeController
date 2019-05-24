@@ -7,6 +7,7 @@
 #include "../../Input/Mouse/Mouse.h"
 #include "../../Input/Keyboard/Keyboard.h"
 #include "../../Input/Bindings/KeyboardBinding.h"
+#include "../../Input/Bindings/XinputBinding.h"
 #include "../../Input/Bindings/Ds4Binding.h"
 #include "../../Input/KeyConfig/Config.h"
 #include "../../Utilities/Operations.h"

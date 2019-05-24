@@ -1,12 +1,16 @@
+#include <iostream>
+#include <vector>
 #include <Windows.h>
 #include <Dbt.h>
 #include "Constants.h"
 #include "MainModule.h"
 #include "Input/Mouse/Mouse.h"
+#include "Input/Xinput/Xinput.h"
 #include "Input/Keyboard/Keyboard.h"
 #include "Input/DirectInput/DirectInput.h"
 #include "Input/DirectInput/Ds4/DualShock4.h"
 #include "Components/ComponentsManager.h"
+#include "FileSystem/ConfigFile.h"
 
 LRESULT CALLBACK MessageWindowProcessCallback(HWND, UINT, WPARAM, LPARAM);
 DWORD WINAPI WindowMessageDispatcher(LPVOID);
@@ -23,10 +27,16 @@ const wchar_t *MessageWindowName = TEXT("MessageWindowTitle");
 
 namespace DivaHook
 {
+	const std::string RESOLUTION_CONFIG_FILE_NAME = "graphics.ini";
 	Components::ComponentsManager ComponentsManager;
 	bool DeviceConnected = true;
 	bool FirstUpdateTick = true;
 	bool HasWindowFocus, HadWindowFocus;
+
+	void InstallCustomResolution()
+	{
+		
+	}
 
 	void* InstallHook(void* source, void* destination, int length)
 	{
@@ -111,6 +121,7 @@ namespace DivaHook
 		{
 			Input::Keyboard::GetInstance()->PollInput();
 			Input::Mouse::GetInstance()->PollInput();
+			Input::Xinput::GetInstance()->PollInput();
 
 			if (Input::DualShock4::GetInstance() != nullptr)
 			{
@@ -134,6 +145,58 @@ namespace DivaHook
 	void InstallHooks()
 	{
 		InstallHook((void*)ENGINE_UPDATE_HOOK_TARGET_ADDRESS, (void*)UpdateTick, 0xE);
+
+		DivaHook::FileSystem::ConfigFile resolutionConfig(MainModule::GetModuleDirectory(), RESOLUTION_CONFIG_FILE_NAME);
+		bool success = resolutionConfig.OpenRead();
+		if (!success)
+		{
+			printf("Resolution: Unable to parse %s\n", RESOLUTION_CONFIG_FILE_NAME.c_str());
+		}
+
+		if (success) {
+			int maxWidth = 2560;
+			int maxHeight = 1440;
+			std::string *value;
+			std::string trueValue = "true";
+			bool isEnabled = false;
+			if (resolutionConfig.TryGetValue("customRes", value))
+			{
+				if (*value == trueValue)
+					isEnabled = true;
+			}
+
+			if (isEnabled == true)
+			{
+				printf("\n");
+				if (resolutionConfig.TryGetValue("maxWidth", value))
+				{
+					maxWidth = std::stoi(*value);
+					printf(value->c_str());
+				}
+				printf("x");
+				if (resolutionConfig.TryGetValue("maxHeight", value))
+				{
+					maxHeight = std::stoi(*value);
+					printf(value->c_str());
+				}
+				{
+					DWORD oldProtect, bck;
+					VirtualProtect((BYTE*)0x00000001409B8B68, 4, PAGE_EXECUTE_READWRITE, &oldProtect);
+					*((int*)0x00000001409B8B68) = maxWidth;
+					VirtualProtect((BYTE*)0x00000001409B8B68, 6, oldProtect, &bck);
+				}
+				{
+					DWORD oldProtect, bck;
+					VirtualProtect((BYTE*)0x00000001409B8B6C, 4, PAGE_EXECUTE_READWRITE, &oldProtect);
+					*((int*)0x00000001409B8B6C) = maxHeight;
+					VirtualProtect((BYTE*)0x00000001409B8B6C, 6, oldProtect, &bck);
+				}
+				//*((int*)0x00000001409B8B6C) = maxHeight;
+				//*((int*)0x00000001409B8B14) = maxWidth;
+				//*((int*)0x00000001409B8B18) = maxHeight;
+			}
+		}
+
 	}
 
 	void Dispose()
@@ -156,7 +219,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	{
 	case DLL_PROCESS_ATTACH:
 		printf("DllMain(): Installing hooks...\n");
-
 		DivaHook::InstallHooks();
 		DivaHook::MainModule::Module = hModule;
 		break;
