@@ -137,6 +137,21 @@ namespace DivaHook::Components
 
 		bool p_open = false;
 
+
+		if (firstTime > 0)
+		{
+			ImGuiWindowFlags window_flags = 0;
+			window_flags |= ImGuiWindowFlags_NoMove;
+			window_flags |= ImGuiWindowFlags_NoResize;
+			window_flags |= ImGuiWindowFlags_NoTitleBar;
+			window_flags |= ImGuiWindowFlags_NoCollapse;
+			window_flags |= ImGuiWindowFlags_AlwaysAutoResize;
+			ImGui::Begin("ELAC", &p_open, window_flags);
+			ImGui::SetWindowPos(ImVec2(0, 0));
+			ImGui::Text("Press Ctrl+LShift+Backspace or Select/Back/Share in your Gamepad to show/hide UI.");
+			ImGui::End();
+		}
+
 		ImGuiWindowFlags window_flags = 0;
 		window_flags |= ImGuiWindowFlags_NoMove;
 		window_flags |= ImGuiWindowFlags_NoResize;
@@ -334,6 +349,8 @@ namespace DivaHook::Components
 	
 	void GLComponent::Update()
 	{
+		if (firstTime > 0) firstTime = firstTime - round(GetElapsedTime());
+
 		int* pvid = (int*)0x00000001418054C4;
 
 		if (pvid_init == false)
