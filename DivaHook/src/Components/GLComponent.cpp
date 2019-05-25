@@ -12,6 +12,7 @@
 
 #include "../Input/Keyboard/Keyboard.h"
 #include "../Input/Xinput/Xinput.h"
+#include <xinput.h>
 
 #include "MinHook.h"
 
@@ -127,11 +128,22 @@ namespace DivaHook::Components
 		io.MouseDown[1] = keyboard->IsDown(VK_RBUTTON);
 		io.MouseDown[2] = keyboard->IsDown(VK_MBUTTON);
 
-
-		if (((keyboard->IsDown(VK_CONTROL)) && (keyboard->IsDown(VK_LSHIFT)) && (keyboard->IsTapped(VK_BACK))) || (xinput->IsTapped(XINPUT_BACK)))
+		XINPUT_STATE state;
+		if (XInputGetState(0, &state) == ERROR_SUCCESS)
 		{
-			if (showUi) { showUi = false; showUi2 = false; }
-			else showUi = true;
+
+			if (((keyboard->IsDown(VK_CONTROL)) && (keyboard->IsDown(VK_LSHIFT)) && (keyboard->IsTapped(VK_BACK))) || (xinput->IsTapped(XINPUT_BACK)))
+			{
+				if (showUi) { showUi = false; showUi2 = false; }
+				else showUi = true;
+			}
+		}
+		else {
+			if (((keyboard->IsDown(VK_CONTROL)) && (keyboard->IsDown(VK_LSHIFT)) && (keyboard->IsTapped(VK_BACK))))
+			{
+				if (showUi) { showUi = false; showUi2 = false; }
+				else showUi = true;
+			}
 		}
 
 		int i = 48;
