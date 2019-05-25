@@ -50,7 +50,7 @@ namespace DivaHook::Components
 	static bool showFps = false;
 	static bool showUi2 = false;
 	static bool showAbout = false;
-	static int firstTime = 1000;
+	static int firstTime = 8000;
 	
 	static int sfxVolume = 100;
 	static int bgmVolume = 100;
