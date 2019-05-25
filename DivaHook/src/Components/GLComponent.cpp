@@ -99,11 +99,6 @@ namespace DivaHook::Components
 
 		if (copydepth)
 		{
-			RECT hWindow;
-			GetClientRect(DivaHook::MainModule::DivaWindowHandle, &hWindow);
-			long uiWidth = hWindow.right - hWindow.left;
-			long uiHeight = hWindow.bottom - hWindow.top;
-
 			glBindFramebufferEXT(GL_READ_FRAMEBUFFER, 3);
 			glBindFramebufferEXT(GL_DRAW_FRAMEBUFFER, 0);
 			glBlitFramebufferEXT(0, 0, *fbWidth, *fbHeight, 0, 0, uiWidth, uiHeight,
