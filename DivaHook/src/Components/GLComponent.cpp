@@ -236,8 +236,12 @@ namespace DivaHook::Components
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 			ImGui::Begin("Debug Ui", &debugUi, window_flags);
+			ImGui::Text("WARNING : diva.exe must be patched to enable DATA_TEST or else it won't work!");
 			if (ImGui::CollapsingHeader("DATA TEST"))
 			{
+				if (ImGui::Button("GS_DATA_TEST")) {
+					changeBaseState(GS_DATA_TEST);
+				}
 				if (ImGui::Button("SUB_DATA_TEST_OBJ")) {
 					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_ITEM);
 				}; ImGui::SameLine();
