@@ -138,6 +138,16 @@ namespace DivaHook
 		{
 			Input::Keyboard::GetInstance()->PollInput();
 			Input::Mouse::GetInstance()->PollInput();
+			Input::Xinput::GetInstance()->PollInput();
+
+			if (Input::DualShock4::GetInstance() != nullptr)
+			{
+				if (!Input::DualShock4::GetInstance()->PollInput())
+				{
+					Input::DualShock4::DeleteInstance();
+					printf("UpdateTick(): DualShock4 connection lost\n");
+				}
+			}
 		}
 
 		if (HasWindowFocus && !HadWindowFocus)
