@@ -92,6 +92,11 @@ namespace DivaHook::Components
 		//int module2 = *();
 		//int module3 = *();
 
+		RECT hWindow;
+		GetClientRect(DivaHook::MainModule::DivaWindowHandle, &hWindow);
+		long uiWidth = hWindow.right - hWindow.left;
+		long uiHeight = hWindow.bottom - hWindow.top;
+
 		if (copydepth)
 		{
 			RECT hWindow;
@@ -110,11 +115,6 @@ namespace DivaHook::Components
 		ImGui_ImplWin32_NewFrame();
 		ImGui_ImplOpenGL2_NewFrame();
 		ImGui::NewFrame();
-
-		RECT hWindow;
-		GetClientRect(DivaHook::MainModule::DivaWindowHandle, &hWindow);
-		long uiWidth = hWindow.right - hWindow.left;
-		long uiHeight = hWindow.bottom - hWindow.top;
 
 		ImGuiIO& io = ImGui::GetIO();
 		auto keyboard = DivaHook::Input::Keyboard::GetInstance();
@@ -165,6 +165,8 @@ namespace DivaHook::Components
 				ImGui::InputInt("Module 2 ID", (int*)0x00000001411A8A14);
 				ImGui::InputInt("Module 3 ID", (int*)0x00000001411A8A18);
 				ImGui::InputInt("HUD Skin ID", (int*)0x00000001411A8D98);
+				ImGui::InputInt("Level Plate Skin ID", (int*)0x00000001411A8974);
+				ImGui::InputInt("Level Plate Skin SFX", (int*)0x00000001411A8978);
 			}
 			if (ImGui::CollapsingHeader("Internal Resolution"))
 			{
