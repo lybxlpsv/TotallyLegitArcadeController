@@ -15,6 +15,7 @@ namespace DivaHook
 
 		static int fpsLimit;
 		static int fpsLimitSet;
+		static bool inputDisable;
 
 		static HWND DivaWindowHandle;
 		static HMODULE Module;

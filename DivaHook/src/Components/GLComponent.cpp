@@ -160,6 +160,7 @@ namespace DivaHook::Components
 		window_flags |= ImGuiWindowFlags_AlwaysAutoResize;
 		
 		if (showUi) {
+			MainModule::inputDisable = true;
 			ImGui::SetNextWindowBgAlpha(uiTransparency);
 			ImGuiWindowFlags window_flags = 0;
 			window_flags |= ImGuiWindowFlags_NoResize;
@@ -212,6 +213,9 @@ namespace DivaHook::Components
 			//if (ImGui::Button("Camera")) { cameraUi = true; } ImGui::SameLine();
 			//if (ImGui::Button("Debug")) { debugUi = true; } ImGui::SameLine();
 			ImGui::End();
+		}
+		else {
+			MainModule::inputDisable = false;
 		}
 
 		if (showAbout)

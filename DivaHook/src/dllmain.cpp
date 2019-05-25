@@ -117,7 +117,7 @@ namespace DivaHook
 		HadWindowFocus = HasWindowFocus;
 		HasWindowFocus = MainModule::DivaWindowHandle == NULL || GetForegroundWindow() == MainModule::DivaWindowHandle;
 
-		if (HasWindowFocus)
+		if ((HasWindowFocus) || (MainModule::inputDisable))
 		{
 			Input::Keyboard::GetInstance()->PollInput();
 			Input::Mouse::GetInstance()->PollInput();

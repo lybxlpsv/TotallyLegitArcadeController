@@ -15,6 +15,7 @@ namespace DivaHook
 
 	int MainModule::fpsLimit = 0;
 	int MainModule::fpsLimitSet = 0;
+	bool MainModule::inputDisable = false;
 
 	std::string MainModule::GetModuleDirectory()
 	{
