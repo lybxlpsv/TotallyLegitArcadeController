@@ -51,6 +51,7 @@ namespace DivaHook::Components
 	static bool showUi2 = false;
 	static bool showAbout = false;
 	static bool debugUi = false;
+	static bool lybdbg = false;
 	static int firstTime = 8000;
 	
 	static int sfxVolume = 100;
@@ -219,7 +220,8 @@ namespace DivaHook::Components
 			//if (ImGui::Button("Reset")) { resetGameUi = true; }; ImGui::SameLine();
 			if (ImGui::Button("About")) { showAbout = true; } ImGui::SameLine();
 			//if (ImGui::Button("Camera")) { cameraUi = true; } ImGui::SameLine();
-			if (ImGui::Button("Debug")) { debugUi = true; } ImGui::SameLine();
+			if (lybdbg)
+				if (ImGui::Button("Debug")) { debugUi = true; } ImGui::SameLine();
 			ImGui::End();
 		}
 		else {
@@ -379,6 +381,11 @@ namespace DivaHook::Components
 				if (*value == trueString)
 					showFps = true;
 			}
+			if (resolutionConfig.TryGetValue("dbg", value))
+			{
+				if (*value == trueString)
+					lybdbg = true;
+			}
 		}
 
 		ImGui::CreateContext();
@@ -401,6 +408,7 @@ namespace DivaHook::Components
 	{
 		if (firstTime > 0) firstTime = firstTime - round(GetElapsedTime());
 
+		if (lybdbg)
 		{
 			auto keyboard = Input::Keyboard::GetInstance();
 
