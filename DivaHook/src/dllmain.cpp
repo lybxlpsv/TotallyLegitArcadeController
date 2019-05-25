@@ -117,7 +117,7 @@ namespace DivaHook
 		HadWindowFocus = HasWindowFocus;
 		HasWindowFocus = MainModule::DivaWindowHandle == NULL || GetForegroundWindow() == MainModule::DivaWindowHandle;
 
-		if ((HasWindowFocus) || (MainModule::inputDisable))
+		if ((HasWindowFocus) && (!MainModule::inputDisable))
 		{
 			Input::Keyboard::GetInstance()->PollInput();
 			Input::Mouse::GetInstance()->PollInput();
@@ -131,8 +131,13 @@ namespace DivaHook
 					printf("UpdateTick(): DualShock4 connection lost\n");
 				}
 			}
-
 			ComponentsManager.UpdateInput();
+		}
+
+		if ((MainModule::inputDisable))
+		{
+			Input::Keyboard::GetInstance()->PollInput();
+			Input::Mouse::GetInstance()->PollInput();
 		}
 
 		if (HasWindowFocus && !HadWindowFocus)

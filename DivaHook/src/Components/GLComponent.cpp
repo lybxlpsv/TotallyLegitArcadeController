@@ -50,6 +50,7 @@ namespace DivaHook::Components
 	static bool showFps = false;
 	static bool showUi2 = false;
 	static bool showAbout = false;
+	static bool debugUi = false;
 	static int firstTime = 8000;
 	
 	static int sfxVolume = 100;
@@ -85,6 +86,13 @@ namespace DivaHook::Components
 
 	BOOL __stdcall hwglSwapBuffers(_In_ HDC hDc)
 	{
+
+		typedef void ChangeGameState(GameState);
+		ChangeGameState* changeBaseState = (ChangeGameState*)CHANGE_MODE_ADDRESS;
+
+		typedef void ChangeLogGameState(GameState, SubGameState);
+		ChangeLogGameState* changeSubState = (ChangeLogGameState*)CHANGE_SUB_MODE_ADDRESS;
+
 		int* fbWidth = (int*)FB_RESOLUTION_WIDTH_ADDRESS;
 		int* fbHeight = (int*)FB_RESOLUTION_HEIGHT_ADDRESS;
 
@@ -211,11 +219,46 @@ namespace DivaHook::Components
 			//if (ImGui::Button("Reset")) { resetGameUi = true; }; ImGui::SameLine();
 			if (ImGui::Button("About")) { showAbout = true; } ImGui::SameLine();
 			//if (ImGui::Button("Camera")) { cameraUi = true; } ImGui::SameLine();
-			//if (ImGui::Button("Debug")) { debugUi = true; } ImGui::SameLine();
+			if (ImGui::Button("Debug")) { debugUi = true; } ImGui::SameLine();
 			ImGui::End();
 		}
 		else {
 			MainModule::inputDisable = false;
+		}
+
+		if (debugUi)
+		{
+			ImGui::SetNextWindowBgAlpha(uiTransparency);
+			ImGuiWindowFlags window_flags = 0;
+			window_flags |= ImGuiWindowFlags_NoResize;
+			window_flags |= ImGuiWindowFlags_NoCollapse;
+			window_flags |= ImGuiWindowFlags_AlwaysAutoResize;
+			io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+			ImGui::Begin("Debug Ui", &debugUi, window_flags);
+			if (ImGui::CollapsingHeader("DATA TEST"))
+			{
+				if (ImGui::Button("SUB_DATA_TEST_OBJ")) {
+					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_ITEM);
+				}; ImGui::SameLine();
+				if (ImGui::Button("SUB_DATA_TEST_STG")) { 
+					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_STG);
+				}; ImGui::SameLine();
+				if (ImGui::Button("SUB_DATA_TEST_MOT")) { 
+					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_MOT);
+				};
+
+				if (ImGui::Button("SUB_DATA_TEST_AUTH_3D")) {
+					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_AUTH_3D);
+				}; ImGui::SameLine();
+				if (ImGui::Button("SUB_DATA_TEST_CHR")) { 
+					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_CHR);
+				}; ImGui::SameLine();
+				if (ImGui::Button("SUB_DATA_TEST_ITEM")) { 
+					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_ITEM);
+				};
+			}
+			ImGui::End();
 		}
 
 		if (showAbout)
@@ -354,6 +397,22 @@ namespace DivaHook::Components
 	void GLComponent::Update()
 	{
 		if (firstTime > 0) firstTime = firstTime - round(GetElapsedTime());
+
+		{
+			auto keyboard = Input::Keyboard::GetInstance();
+
+			typedef void ChangeGameState(GameState);
+			ChangeGameState* changeBaseState = (ChangeGameState*)CHANGE_MODE_ADDRESS;
+
+			typedef void ChangeLogGameState(GameState, SubGameState);
+			ChangeLogGameState* changeSubState = (ChangeLogGameState*)CHANGE_SUB_MODE_ADDRESS;
+
+			if (keyboard->IsTapped(VK_F4)) changeBaseState(GS_ADVERTISE);
+			if (keyboard->IsTapped(VK_F5)) changeBaseState(GS_GAME);
+			if (keyboard->IsTapped(VK_F6)) changeBaseState(GS_DATA_TEST);
+			if (keyboard->IsTapped(VK_F7)) changeBaseState(GS_TEST_MODE);
+			if (keyboard->IsTapped(VK_F8)) changeBaseState(GS_APP_ERROR);
+		}
 
 		int* pvid = (int*)0x00000001418054C4;
 
