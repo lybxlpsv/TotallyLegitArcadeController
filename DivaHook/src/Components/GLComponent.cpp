@@ -196,6 +196,9 @@ namespace DivaHook::Components
 				ImGui::InputInt("Module 1 ID", (int*)0x00000001411A8A10);
 				ImGui::InputInt("Module 2 ID", (int*)0x00000001411A8A14);
 				ImGui::InputInt("Module 3 ID", (int*)0x00000001411A8A18);
+				ImGui::InputInt("Module 4 ID", (int*)0x00000001411A8A1C);
+				ImGui::InputInt("Module 5 ID", (int*)0x00000001411A8A20);
+				ImGui::InputInt("Module 6 ID", (int*)0x00000001411A8A24);
 				ImGui::InputInt("HUD Skin ID", (int*)0x00000001411A8D98);
 				ImGui::InputInt("Level Plate Skin ID", (int*)0x00000001411A8974);
 				ImGui::InputInt("Level Plate Skin SFX", (int*)0x00000001411A8978);
