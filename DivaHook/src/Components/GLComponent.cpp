@@ -70,6 +70,7 @@ namespace DivaHook::Components
 	static std::chrono::time_point prevTimeInSeconds = time_point_cast<seconds>(mBeginFrame);
 	static unsigned frameCountPerSecond = 0;
 
+
 	int last_pvid = -1;
 	bool pvid_init = false;
 
@@ -217,6 +218,7 @@ namespace DivaHook::Components
 			{
 				ImGui::Text("--- Anti-Aliasing ---");
 				ImGui::Checkbox("TAA (Temporal AA)", &temporalAA);
+				ImGui::Checkbox("MLAA (Morphological AA)", &morphologicalAA);
 				ImGui::Text("--- Bug Fixes ---");
 				ImGui::Checkbox("Toon Shader (When Running with: -hdtv1080/-aa)", &toonShader);
 			}
@@ -277,6 +279,10 @@ namespace DivaHook::Components
 				if (ImGui::Button("SUB_DATA_TEST_ITEM")) { 
 					changeSubState(GS_DATA_TEST, SUB_DATA_TEST_ITEM);
 				};
+			}
+			if (ImGui::CollapsingHeader("dbg"))
+			{
+				ImGui::InputInt("", (int*)0x000000014CD93788);
 			}
 			ImGui::End();
 		}
@@ -386,6 +392,14 @@ namespace DivaHook::Components
 			{
 				toonShader = std::stoi(*value);
 			}
+			if (resolutionConfig.TryGetValue("fbWidth", value))
+			{
+				*(int*)FB_RESOLUTION_WIDTH_ADDRESS = std::stoi(*value);
+			}
+			if (resolutionConfig.TryGetValue("fbHeight", value))
+			{
+				*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = std::stoi(*value);
+			}
 			if (resolutionConfig.TryGetValue("depthCopy", value))
 			{
 				if (*value == trueString)
@@ -487,6 +501,20 @@ namespace DivaHook::Components
 			VirtualProtect((BYTE*)0x00000001411AB67C, 1, PAGE_EXECUTE_READWRITE, &oldProtect);
 			*((byte*)0x00000001411AB67C + 0) = 0x00;
 			VirtualProtect((BYTE*)0x00000001411AB67C, 1, oldProtect, &bck);
+		}
+
+		if (morphologicalAA)
+		{
+			DWORD oldProtect, bck;
+			VirtualProtect((BYTE*)0x00000001411AB680, 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+			*((byte*)0x00000001411AB680 + 0) = 0x01;
+			VirtualProtect((BYTE*)0x00000001411AB680, 1, oldProtect, &bck);
+		}
+		else {
+			DWORD oldProtect, bck;
+			VirtualProtect((BYTE*)0x00000001411AB680, 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+			*((byte*)0x00000001411AB680 + 0) = 0x00;
+			VirtualProtect((BYTE*)0x00000001411AB680, 1, oldProtect, &bck);
 		}
 
 		

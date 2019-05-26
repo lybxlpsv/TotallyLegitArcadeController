@@ -37,8 +37,8 @@ namespace DivaHook::Components
 	void FrameRateManager::Update()
 	{
 		float frameRate = 0.0f;
-		if (DivaHook::MainModule::fpsLimit != 0) {
-			frameRate = DivaHook::MainModule::fpsLimit;
+		if (DivaHook::MainModule::fpsLimitSet != 0) {
+			frameRate = DivaHook::MainModule::fpsLimitSet;
 		} else
 		frameRate = RoundFrameRate(GetGameFrameRate());
 
