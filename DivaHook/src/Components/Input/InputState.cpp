@@ -6,15 +6,15 @@ namespace DivaHook::Components
 {
 	void InputState::ClearState()
 	{
-		//memset(this, 0, sizeof(InputState));
+		memset(this, 0, sizeof(InputState));
 	}
 
 	void InputState::HideCursor()
 	{
-		//MouseX = INT32_MIN;
-		//MouseY = INT32_MIN;
-		//MouseDeltaX = 0;
-		//MouseDeltaY = 0;
+		MouseX = INT32_MIN;
+		MouseY = INT32_MIN;
+		MouseDeltaX = 0;
+		MouseDeltaY = 0;
 	}
 
 	void InputState::SetBit(uint32_t bit, bool value, InputBufferType inputType)
