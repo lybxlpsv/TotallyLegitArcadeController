@@ -70,28 +70,13 @@ namespace DivaHook::Components
 			delete customPlayerData;
 
 		customPlayerData = new CustomPlayerData();
+		config.TryGetValue("player_name", &customPlayerData->PlayerName);
 
-		auto parseInt = [&](const std::string &key)
-		{
-			std::string *stringBuffer;
-
-			int result = 0;
-
-			if (config.TryGetValue(key, stringBuffer))
-			{
-				result = std::stoi(stringBuffer->c_str());
-				delete stringBuffer;
-			}
-
-			return result;
-		};
-
-		config.TryGetValue("player_name", customPlayerData->PlayerName);
-
-		customPlayerData->LevelPlateId = parseInt("level_plate_id");
-		customPlayerData->SkinEquip = parseInt("skin_equip");
-		customPlayerData->BtnSeEquip = parseInt("btn_se_equip");
-		customPlayerData->ChainslideSeEquip = parseInt("chainslide_se_equip");
+		customPlayerData->LevelPlateId = config.GetIntegerValue("level_plate_id");
+		customPlayerData->SkinEquip = config.GetIntegerValue("skin_equip");
+		customPlayerData->BtnSeEquip = config.GetIntegerValue("btn_se_equip");
+		customPlayerData->SlideSeEquip = config.GetIntegerValue("slide_se_equip");
+		customPlayerData->ChainslideSeEquip = config.GetIntegerValue("chainslide_se_equip");
 	}
 
 	void PlayerDataManager::ApplyCustomData()
@@ -106,6 +91,7 @@ namespace DivaHook::Components
 		setIfNotEqual(&playerData->level_plate_id, customPlayerData->LevelPlateId, 0);
 		setIfNotEqual(&playerData->skin_equip, customPlayerData->SkinEquip, 0);
 		setIfNotEqual(&playerData->btn_se_equip, customPlayerData->BtnSeEquip, -1);
+		setIfNotEqual(&playerData->slide_se_equip, customPlayerData->SlideSeEquip, -1);
 		setIfNotEqual(&playerData->chainslide_se_equip, customPlayerData->ChainslideSeEquip, -1);
 
 		if (customPlayerData->PlayerName != nullptr)

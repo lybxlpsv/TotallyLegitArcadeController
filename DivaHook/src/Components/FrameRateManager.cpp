@@ -39,8 +39,10 @@ namespace DivaHook::Components
 		float frameRate = 0.0f;
 		if (DivaHook::MainModule::fpsLimitSet != 0) {
 			frameRate = DivaHook::MainModule::fpsLimitSet;
-		} else
+		}
+		else
 		frameRate = RoundFrameRate(GetGameFrameRate());
+
 
 		*aetFrameDuration = 1.0f / frameRate;
 		*pvFrameRate = frameRate;

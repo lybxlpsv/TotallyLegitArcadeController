@@ -1,17 +1,18 @@
 #include "ComponentsManager.h"
+#include "../FileSystem/ConfigFile.h"
+#include "../MainModule.h"
 #include "Input/InputEmulator.h"
 #include "Input/TouchSliderEmulator.h"
 #include "Input/TouchPanelEmulator.h"
 #include "SysTimer.h"
 #include "PlayerDataManager.h"
 #include "FrameRateManager.h"
-#include "StageManager.h"
 #include "FastLoader.h"
 #include "GLComponent.h"
 #include "ScaleComponent.h"
-#include "../FileSystem/ConfigFile.h"
-#include "../MainModule.h"
-#include "../Constants.h"
+#include "StageManager.h"
+#include "CameraController.h"
+#include "DebugComponent.h"
 
 using ConfigFile = DivaHook::FileSystem::ConfigFile;
 
@@ -37,10 +38,12 @@ namespace DivaHook::Components
 			new SysTimer(),
 			new PlayerDataManager(),
 			new FrameRateManager(),
-			new StageManager(),
 			new FastLoader(),
 			new ScaleComponent(),
 			new GLComponent(),
+			new StageManager(),
+			new CameraController(),
+			new DebugComponent(),
 		};
 
 		ConfigFile componentsConfig(MainModule::GetModuleDirectory(), COMPONENTS_CONFIG_FILE_NAME);
@@ -64,7 +67,7 @@ namespace DivaHook::Components
 			auto name = allComponents[i]->GetDisplayName();
 			//printf("ComponentsManager::ParseAddComponents(): searching name: %s\n", name);
 
-			if (componentsConfig.TryGetValue(name, value))
+			if (componentsConfig.TryGetValue(name, &value))
 			{
 				//printf("ComponentsManager::ParseAddComponents(): %s found\n", name);
 
@@ -95,6 +98,8 @@ namespace DivaHook::Components
 
 	void ComponentsManager::Initialize()
 	{
+		dwGuiDisplay = (DwGuiDisplay*)*(uint64_t*)DW_GUI_DISPLAY_INSTANCE_PTR_ADDRESS;
+		
 		ParseAddComponents();
 		updateStopwatch.Start();
 

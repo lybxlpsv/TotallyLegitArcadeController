@@ -2,6 +2,7 @@
 #include <vector>
 #include <Windows.h>
 #include <Dbt.h>
+#include <stdio.h>
 #include "Constants.h"
 #include "MainModule.h"
 #include "Input/Mouse/Mouse.h"
@@ -35,7 +36,7 @@ namespace DivaHook
 
 	void InstallCustomResolution()
 	{
-		
+
 	}
 
 	void* InstallHook(void* source, void* destination, int length)
@@ -174,7 +175,7 @@ namespace DivaHook
 			std::string *value;
 			std::string trueValue = "true";
 			bool isEnabled = false;
-			if (resolutionConfig.TryGetValue("customRes", value))
+			if (resolutionConfig.TryGetValue("customRes", &value))
 			{
 				if (*value == trueValue)
 					isEnabled = true;
@@ -183,13 +184,13 @@ namespace DivaHook
 			if (isEnabled == true)
 			{
 				printf("\n");
-				if (resolutionConfig.TryGetValue("maxWidth", value))
+				if (resolutionConfig.TryGetValue("maxWidth", &value))
 				{
 					maxWidth = std::stoi(*value);
 					printf(value->c_str());
 				}
 				printf("x");
-				if (resolutionConfig.TryGetValue("maxHeight", value))
+				if (resolutionConfig.TryGetValue("maxHeight", &value))
 				{
 					maxHeight = std::stoi(*value);
 					printf(value->c_str());

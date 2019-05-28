@@ -5,6 +5,7 @@
 #include "../../Utilities/Operations.h"
 #include "../Bindings/XinputBinding.h"
 #include "../../Constants.h"
+
 namespace DivaHook::Input::KeyConfig
 {
 	KeycodeMap Config::Keymap =
@@ -85,6 +86,9 @@ namespace DivaHook::Input::KeyConfig
 		{ "PageDown", VK_NEXT },
 		{ "ESC",    VK_ESCAPE },
 		{ "Escape", VK_ESCAPE },
+		{ "Comma",	VK_OEM_COMMA },
+		{ "Period", VK_OEM_PERIOD },
+		{ "Slash",	VK_OEM_2 },
 	};
 
 	KeycodeMap Config::XinputMap =
