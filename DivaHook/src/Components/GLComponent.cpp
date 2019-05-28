@@ -23,6 +23,7 @@
 #include "GL/glew.h"
 #include "GL/gl.h"
 #include "../MainModule.h"
+#include "parser.hpp"
 
 namespace DivaHook::Components
 {
@@ -65,6 +66,10 @@ namespace DivaHook::Components
 	static bool temporalAA = 0;
 	static bool temporalAA2 = 0;
 	static bool copydepth = false;
+
+	static float res_scale[1000];
+	static float originalResX = 2560;
+	static float originalResY = 1440;
 
 	static std::chrono::time_point mBeginFrame = system_clock::now();
 	static std::chrono::time_point prevTimeInSeconds = time_point_cast<seconds>(mBeginFrame);
@@ -182,6 +187,7 @@ namespace DivaHook::Components
 		window_flags |= ImGuiWindowFlags_AlwaysAutoResize;
 		
 		if (showUi) {
+			if (ImGui::IsMouseHoveringWindow)
 			MainModule::inputDisable = true;
 			ImGui::SetNextWindowBgAlpha(uiTransparency);
 			ImGuiWindowFlags window_flags = 0;
@@ -354,15 +360,13 @@ namespace DivaHook::Components
 		mBeginFrame = mEndFrame;
 		mEndFrame = mBeginFrame + invFpsLimit;
 
+
+
 		return owglSwapBuffers(hDc);
 	}
 
 	void GLComponent::Initialize(ComponentsManager*)
 	{
-		
-		
-		
-
 		glewInit();
 		fprintf(stdout, "Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
 
@@ -417,6 +421,36 @@ namespace DivaHook::Components
 			}
 		}
 
+		for (int i = 0; i < 1000; i++)
+		{
+			res_scale[i] = 1.0f;
+		}
+
+		originalResX = *(int*)FB_RESOLUTION_HEIGHT_ADDRESS;
+		originalResY = *(int*)FB_RESOLUTION_WIDTH_ADDRESS;
+
+		std::ifstream f("res_scale.csv");
+		if (f.good())
+		{
+			aria::csv::CsvParser parser(f);
+			int rowNum = 0;
+			int fieldNum = 0;
+			int currentPvId = 0;
+			for (auto& row : parser) {
+				currentPvId = 999;
+				for (auto& field : row) {
+					if (fieldNum == 0)
+						currentPvId = std::stoi(field);
+					if (fieldNum == 1)
+						res_scale[currentPvId] = std::stof(field);
+					fieldNum++;
+				}
+				fieldNum = 0;
+				rowNum++;
+			}
+		}
+
+
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
 		io.WantCaptureKeyboard == true;
@@ -430,12 +464,18 @@ namespace DivaHook::Components
 		MH_Initialize();
 		MH_CreateHook(ptr, hwglSwapBuffers, reinterpret_cast<void**>(&owglSwapBuffers));
 		MH_EnableHook(ptr);
+		
 	}
 
+	static bool initialize = false;
 	
 	void GLComponent::Update()
 	{
 		if (firstTime > 0) firstTime = firstTime - round(GetElapsedTime());
+		if (firstTime < 10000) {
+			
+		}
+
 
 		if (lybdbg)
 		{
@@ -474,6 +514,9 @@ namespace DivaHook::Components
 
 		if (*pvid != last_pvid)
 		{
+			*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = originalResX * res_scale[*pvid];
+			*(int*)FB_RESOLUTION_WIDTH_ADDRESS = originalResY * res_scale[*pvid];
+
 			pvid_init = false;
 			last_pvid = *pvid;
 			DWORD oldProtect, bck;
