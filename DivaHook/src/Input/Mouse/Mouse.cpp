@@ -60,14 +60,24 @@ namespace DivaHook::Input
 		return delta.x != 0 || delta.y != 0;
 	}
 
-	bool Mouse::ScrolledUp()
+	bool Mouse::GetIsScrolledUp()
 	{
-		return GetDeltaMouseWheel() > 0;
+		return currentState.ScrolledUp;
 	}
 
-	bool Mouse::ScrolledDown()
+	bool Mouse::GetIsScrolledDown()
 	{
-		return GetDeltaMouseWheel() < 0;
+		return currentState.ScrolledDown;
+	}
+
+	bool Mouse::GetWasScrolledUp()
+	{
+		return lastState.ScrolledUp;
+	}
+
+	bool Mouse::GetWasScrolledDown()
+	{
+		return lastState.ScrolledDown;
 	}
 
 	void Mouse::SetPosition(int x, int y)
@@ -87,7 +97,7 @@ namespace DivaHook::Input
 		if (MainModule::DivaWindowHandle != NULL)
 			ScreenToClient(MainModule::DivaWindowHandle, &currentState.RelativePosition);
 
-		RECT hWindow;
+			RECT hWindow;
 		GetClientRect(DivaHook::MainModule::DivaWindowHandle, &hWindow);
 
 		gameHeight = (int*)RESOLUTION_HEIGHT_ADDRESS;
@@ -99,6 +109,9 @@ namespace DivaHook::Input
 		{
 			if (directInputMouse->Poll())
 				currentState.MouseWheel += directInputMouse->GetMouseWheel();
+		
+			currentState.ScrolledUp = (GetDeltaMouseWheel() > 0);
+			currentState.ScrolledDown = (GetDeltaMouseWheel() < 0);
 		}
 
 		if ((fbWidth != gameWidth) && (fbHeight != gameHeight)) {
@@ -115,6 +128,7 @@ namespace DivaHook::Input
 			currentState.RelativePosition.x = ((currentState.RelativePosition.x - round(xoffset)) * *gameWidth / (hWindow.right - hWindow.left)) / scale;
 			currentState.RelativePosition.y = currentState.RelativePosition.y * *gameHeight / (hWindow.bottom - hWindow.top);
 		}
+
 
 		return true;
 	}

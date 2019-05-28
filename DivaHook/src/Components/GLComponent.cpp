@@ -376,41 +376,41 @@ namespace DivaHook::Components
 		if (success) {
 			std::string trueString = "1";
 			std::string *value;
-			if (resolutionConfig.TryGetValue("fpsLimit", value))
+			if (resolutionConfig.TryGetValue("fpsLimit", &value))
 			{
 				DivaHook::MainModule::fpsLimitSet = std::stoi(*value);
 			}
-			if (resolutionConfig.TryGetValue("MLAA", value))
+			if (resolutionConfig.TryGetValue("MLAA", &value))
 			{
 				morphologicalAA = std::stoi(*value);
 			}
-			if (resolutionConfig.TryGetValue("TAA", value))
+			if (resolutionConfig.TryGetValue("TAA", &value))
 			{
 				temporalAA = std::stoi(*value);
 			}
-			if (resolutionConfig.TryGetValue("toonShaderWorkaround", value))
+			if (resolutionConfig.TryGetValue("toonShaderWorkaround", &value))
 			{
 				toonShader = std::stoi(*value);
 			}
-			if (resolutionConfig.TryGetValue("fbWidth", value))
+			if (resolutionConfig.TryGetValue("fbWidth", &value))
 			{
 				*(int*)FB_RESOLUTION_WIDTH_ADDRESS = std::stoi(*value);
 			}
-			if (resolutionConfig.TryGetValue("fbHeight", value))
+			if (resolutionConfig.TryGetValue("fbHeight", &value))
 			{
 				*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = std::stoi(*value);
 			}
-			if (resolutionConfig.TryGetValue("depthCopy", value))
+			if (resolutionConfig.TryGetValue("depthCopy", &value))
 			{
 				if (*value == trueString)
 					copydepth = true;
 			}
-			if (resolutionConfig.TryGetValue("showFps", value))
+			if (resolutionConfig.TryGetValue("showFps", &value))
 			{
 				if (*value == trueString)
 					showFps = true;
 			}
-			if (resolutionConfig.TryGetValue("dbg", value))
+			if (resolutionConfig.TryGetValue("dbg", &value))
 			{
 				if (*value == trueString)
 					lybdbg = true;
