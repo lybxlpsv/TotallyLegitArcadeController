@@ -1,1 +1,1 @@
-tlac "diva -wqhd"
+tlac.exe "diva.exe -wqhd"
