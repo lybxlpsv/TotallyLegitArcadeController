@@ -197,19 +197,50 @@ namespace DivaHook::Components
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 			ImGui::Begin("DivaHook Config", &showUi, window_flags);
-			if (ImGui::CollapsingHeader("Modules and Custom Skins/Sounds"))
+			if (*(int*)0x00000001411A8850 == 1)
 			{
-				ImGui::Text("--- Changes only takes effect after entering a new stage. ---");
-				ImGui::InputInt("Module 1 ID", (int*)0x00000001411A8A10);
-				ImGui::InputInt("Module 2 ID", (int*)0x00000001411A8A14);
-				ImGui::InputInt("Module 3 ID", (int*)0x00000001411A8A18);
-				ImGui::InputInt("Module 4 ID", (int*)0x00000001411A8A1C);
-				ImGui::InputInt("Module 5 ID", (int*)0x00000001411A8A20);
-				ImGui::InputInt("Module 6 ID", (int*)0x00000001411A8A24);
-				ImGui::InputInt("HUD Skin ID", (int*)0x00000001411A8D98);
-				ImGui::InputInt("Level Plate Skin ID", (int*)0x00000001411A8974);
-				ImGui::InputInt("Level Plate Skin SFX", (int*)0x00000001411A8978);
+				if (ImGui::CollapsingHeader("Modules and Custom Skins/Sounds (Card)"))
+				{
+					ImGui::Text("--- Changes only takes effect after entering a new stage. ---");
+					ImGui::InputInt("Module 1 ID", (int*)0x00000001411A8A28);
+					ImGui::InputInt("Module 2 ID", (int*)0x00000001411A8A2C);
+					ImGui::InputInt("Module 3 ID", (int*)0x00000001411A8A30);
+					ImGui::InputInt("Module 4 ID", (int*)0x00000001411A8A34);
+					ImGui::InputInt("Module 5 ID", (int*)0x00000001411A8A38);
+					ImGui::InputInt("Module 6 ID", (int*)0x00000001411A8A3C);
+					ImGui::InputInt("HUD Skin ID", (int*)0x00000001411A8D98);
+					ImGui::InputInt("Level Plate Skin ID", (int*)0x00000001411A8974);
+					ImGui::InputInt("Level Plate Skin SFX", (int*)0x00000001411A8978);
+				}
+
+				if (ImGui::CollapsingHeader("Modules (Read Only)"))
+				{
+					ImGui::Text("--- For viewing purposes. ---");
+					ImGui::InputInt("Module 1 ID", (int*)0x00000001411A8A10);
+					ImGui::InputInt("Module 2 ID", (int*)0x00000001411A8A14);
+					ImGui::InputInt("Module 3 ID", (int*)0x00000001411A8A18);
+					ImGui::InputInt("Module 4 ID", (int*)0x00000001411A8A1C);
+					ImGui::InputInt("Module 5 ID", (int*)0x00000001411A8A20);
+					ImGui::InputInt("Module 6 ID", (int*)0x00000001411A8A24);
+				}
+				
 			}
+			else {
+				if (ImGui::CollapsingHeader("Modules and Custom Skins/Sounds"))
+				{
+					ImGui::Text("--- Changes only takes effect after entering a new stage. ---");
+					ImGui::InputInt("Module 1 ID", (int*)0x00000001411A8A10);
+					ImGui::InputInt("Module 2 ID", (int*)0x00000001411A8A14);
+					ImGui::InputInt("Module 3 ID", (int*)0x00000001411A8A18);
+					ImGui::InputInt("Module 4 ID", (int*)0x00000001411A8A1C);
+					ImGui::InputInt("Module 5 ID", (int*)0x00000001411A8A20);
+					ImGui::InputInt("Module 6 ID", (int*)0x00000001411A8A24);
+					ImGui::InputInt("HUD Skin ID", (int*)0x00000001411A8D98);
+					ImGui::InputInt("Level Plate Skin ID", (int*)0x00000001411A8974);
+					ImGui::InputInt("Level Plate Skin SFX", (int*)0x00000001411A8978);
+				}
+			}
+
 			if (ImGui::CollapsingHeader("Internal Resolution"))
 			{
 				ImGui::InputInt("Resolution Width", fbWidth);
@@ -423,7 +454,7 @@ namespace DivaHook::Components
 
 		for (int i = 0; i < 1000; i++)
 		{
-			res_scale[i] = 1.0f;
+			res_scale[i] = -1.0f;
 		}
 
 		originalResX = *(int*)FB_RESOLUTION_HEIGHT_ADDRESS;
@@ -496,42 +527,64 @@ namespace DivaHook::Components
 
 		int* pvid = (int*)0x00000001418054C4;
 
-		if (pvid_init == false)
+		if (*(int*)0x00000001411A8850 != 1)
 		{
-			DWORD oldProtect, bck;
-			VirtualProtect((BYTE*)0x00000001405CBBA3, 8, PAGE_EXECUTE_READWRITE, &oldProtect);
-			*((byte*)0x00000001405CBBA3 + 0) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 1) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 2) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 3) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 4) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 5) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 6) = 0x90;
-			*((byte*)0x00000001405CBBA3 + 7) = 0x90;
-			VirtualProtect((BYTE*)0x00000001405CBBA3, 8, oldProtect, &bck);
-			pvid_init = true;
+			if (pvid_init == false)
+			{
+				DWORD oldProtect, bck;
+				VirtualProtect((BYTE*)0x00000001405CBBA3, 8, PAGE_EXECUTE_READWRITE, &oldProtect);
+				*((byte*)0x00000001405CBBA3 + 0) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 1) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 2) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 3) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 4) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 5) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 6) = 0x90;
+				*((byte*)0x00000001405CBBA3 + 7) = 0x90;
+				VirtualProtect((BYTE*)0x00000001405CBBA3, 8, oldProtect, &bck);
+				pvid_init = true;
+			}
+
+			if (*pvid != last_pvid)
+			{
+				if (res_scale[*pvid] != -1.0f) {
+					*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = originalResX * res_scale[*pvid];
+					*(int*)FB_RESOLUTION_WIDTH_ADDRESS = originalResY * res_scale[*pvid];
+				}
+
+				pvid_init = false;
+				last_pvid = *pvid;
+				DWORD oldProtect, bck;
+				VirtualProtect((BYTE*)0x00000001405CBBA3, 8, PAGE_EXECUTE_READWRITE, &oldProtect);
+				*((byte*)0x00000001405CBBA3 + 0) = 0x42;
+				*((byte*)0x00000001405CBBA3 + 1) = 0x89;
+				*((byte*)0x00000001405CBBA3 + 2) = 0x84;
+				*((byte*)0x00000001405CBBA3 + 3) = 0xb6;
+				*((byte*)0x00000001405CBBA3 + 4) = 0xc0;
+				*((byte*)0x00000001405CBBA3 + 5) = 0x01;
+				*((byte*)0x00000001405CBBA3 + 6) = 0x00;
+				*((byte*)0x00000001405CBBA3 + 7) = 0x00;
+				VirtualProtect((BYTE*)0x00000001405CBBA3, 8, oldProtect, &bck);
+			}
 		}
+		else {
+			if (pvid_init == false)
+			{
+				pvid_init = true;
+			}
 
-		if (*pvid != last_pvid)
-		{
-			*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = originalResX * res_scale[*pvid];
-			*(int*)FB_RESOLUTION_WIDTH_ADDRESS = originalResY * res_scale[*pvid];
+			if (*pvid != last_pvid)
+			{
+				if (res_scale[*pvid] != -1.0f) {
+					*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = originalResX * res_scale[*pvid];
+					*(int*)FB_RESOLUTION_WIDTH_ADDRESS = originalResY * res_scale[*pvid];
+				}
 
-			pvid_init = false;
-			last_pvid = *pvid;
-			DWORD oldProtect, bck;
-			VirtualProtect((BYTE*)0x00000001405CBBA3, 8, PAGE_EXECUTE_READWRITE, &oldProtect);
-			*((byte*)0x00000001405CBBA3 + 0) = 0x42;
-			*((byte*)0x00000001405CBBA3 + 1) = 0x89;
-			*((byte*)0x00000001405CBBA3 + 2) = 0x84;
-			*((byte*)0x00000001405CBBA3 + 3) = 0xb6;
-			*((byte*)0x00000001405CBBA3 + 4) = 0xc0;
-			*((byte*)0x00000001405CBBA3 + 5) = 0x01;
-			*((byte*)0x00000001405CBBA3 + 6) = 0x00;
-			*((byte*)0x00000001405CBBA3 + 7) = 0x00;
-			VirtualProtect((BYTE*)0x00000001405CBBA3, 8, oldProtect, &bck);
+				pvid_init = false;
+				last_pvid = *pvid;
+			}
+
 		}
-
 		if (temporalAA)
 		{
 			DWORD oldProtect, bck;
