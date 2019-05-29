@@ -599,8 +599,11 @@ namespace DivaHook::Components
 			if (*pvid != last_pvid)
 			{
 				if (res_scale[*pvid] != -1.0f) {
-					*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = originalResX * res_scale[*pvid];
-					*(int*)FB_RESOLUTION_WIDTH_ADDRESS = originalResY * res_scale[*pvid];
+					if ((*pvid > 0) && (*pvid < 999))
+					{
+						*(int*)FB_RESOLUTION_HEIGHT_ADDRESS = originalResX * res_scale[*pvid];
+						*(int*)FB_RESOLUTION_WIDTH_ADDRESS = originalResY * res_scale[*pvid];
+					}
 				}
 
 				pvid_init = false;
