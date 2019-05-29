@@ -67,6 +67,8 @@ namespace DivaHook::Components
 	static bool temporalAA2 = 0;
 	static bool copydepth = false;
 
+	static bool copymodules = false;
+
 	static float res_scale[1000];
 	static float originalResX = 2560;
 	static float originalResY = 1440;
@@ -211,6 +213,7 @@ namespace DivaHook::Components
 					ImGui::InputInt("HUD Skin ID", (int*)0x00000001411A8D98);
 					ImGui::InputInt("Level Plate Skin ID", (int*)0x00000001411A8974);
 					ImGui::InputInt("Level Plate Skin SFX", (int*)0x00000001411A8978);
+					ImGui::Checkbox("Copy Default Modules to Card", &copymodules);
 				}
 
 				if (ImGui::CollapsingHeader("Modules (Read Only)"))
@@ -570,6 +573,14 @@ namespace DivaHook::Components
 		else {
 			if (pvid_init == false)
 			{
+				if (copymodules) {
+					*(int*)0x00000001411A8A28 = *(int*)0x00000001411A8A10;
+					*(int*)0x00000001411A8A2C = *(int*)0x00000001411A8A14;
+					*(int*)0x00000001411A8A30 = *(int*)0x00000001411A8A18;
+					*(int*)0x00000001411A8A34 = *(int*)0x00000001411A8A1C;
+					*(int*)0x00000001411A8A38 = *(int*)0x00000001411A8A20;
+					*(int*)0x00000001411A8A3C = *(int*)0x00000001411A8A24;
+				}
 				pvid_init = true;
 			}
 
