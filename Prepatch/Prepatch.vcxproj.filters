@@ -9,40 +9,48 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Source Files\Patch">
+      <UniqueIdentifier>{d0e518e0-05a5-4386-80ab-52833a1c3a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StringOperations">
+      <UniqueIdentifier>{cde7950c-2c87-4b1d-b6d1-4d256fbd8e28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Patch">
+      <UniqueIdentifier>{7a9c0218-7235-4d1b-b0f9-3aa79cb91aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\StringOperations">
+      <UniqueIdentifier>{2df58874-c720-4221-becc-e452267b0dfc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Patch\Patcher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Patch\Patch.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Patch</Filter>
     </ClCompile>
     <ClCompile Include="src\Patch\PatchData.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Patch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Patch\Patcher.cpp">
+      <Filter>Source Files\Patch</Filter>
     </ClCompile>
     <ClCompile Include="src\StringOperations\Operations.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\StringOperations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Patch\Patcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Patch\Patch.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Patch</Filter>
     </ClInclude>
     <ClInclude Include="src\Patch\PatchData.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Patch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Patch\Patcher.h">
+      <Filter>Header Files\Patch</Filter>
     </ClInclude>
     <ClInclude Include="src\StringOperations\Operations.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\StringOperations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

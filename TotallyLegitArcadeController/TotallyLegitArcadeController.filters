@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Injection\DllInjector.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Injection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{824637f0-6307-4dff-818e-7328ae2888f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{19e4873e-eb70-4028-8ba5-f3f609fd7149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Injection">
+      <UniqueIdentifier>{aa87a389-fee4-4b2a-8752-d1c755d78754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Injection">
+      <UniqueIdentifier>{fa0ba07f-f546-4934-833a-719a92525405}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="src\Injection\DllInjector.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Injection</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
