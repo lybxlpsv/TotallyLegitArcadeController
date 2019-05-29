@@ -502,7 +502,8 @@ namespace DivaHook::Components
 	}
 
 	static bool initialize = false;
-	
+	static int lastmodstate = 0;
+
 	void GLComponent::Update()
 	{
 		if (firstTime > 0) firstTime = firstTime - round(GetElapsedTime());
@@ -583,6 +584,17 @@ namespace DivaHook::Components
 				}
 				pvid_init = true;
 			}
+
+			if ((lastmodstate == 1) && (*(int*)0x00000001411A9790 == 0) && (copymodules))
+			{
+				*(int*)0x00000001411A8A28 = *(int*)0x00000001411A8A10;
+				*(int*)0x00000001411A8A2C = *(int*)0x00000001411A8A14;
+				*(int*)0x00000001411A8A30 = *(int*)0x00000001411A8A18;
+				*(int*)0x00000001411A8A34 = *(int*)0x00000001411A8A1C;
+				*(int*)0x00000001411A8A38 = *(int*)0x00000001411A8A20;
+				*(int*)0x00000001411A8A3C = *(int*)0x00000001411A8A24;
+			}
+			lastmodstate = *(int*)0x00000001411A9790;
 
 			if (*pvid != last_pvid)
 			{
