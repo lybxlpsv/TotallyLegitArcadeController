@@ -9,346 +9,434 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Source Files\Dependencies">
+      <UniqueIdentifier>{e2d794c1-e544-46d6-8b52-22fa7ed12aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dependencies">
+      <UniqueIdentifier>{72bd574d-f0ea-4cbf-8f91-abde62c6e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dependencies\imgui">
+      <UniqueIdentifier>{4c7d82bf-e890-41ca-a603-d0c7420db3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{f1155e08-44d3-4ce0-b54c-2d974a77c729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileSystem">
+      <UniqueIdentifier>{c827059c-659f-452a-8083-d148b2675b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{4143c157-0ec6-4faa-9e00-8e9959a2b36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{e0313802-dcde-4cf6-9154-85910d67a9c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Input">
+      <UniqueIdentifier>{6552d7fa-45a1-4fc0-b75a-79db03edf6c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Bindings">
+      <UniqueIdentifier>{991102c4-7d17-46c9-b720-37481f3a4501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\DirectInput">
+      <UniqueIdentifier>{4f67c43e-e84c-4c9c-a091-4e9e462a73b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Keyboard">
+      <UniqueIdentifier>{8f5541d0-0fe1-4414-a467-bf3549c34ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\KeyConfig">
+      <UniqueIdentifier>{441d0dcf-6af1-4fcc-b2ec-b3c7992a0568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Mouse">
+      <UniqueIdentifier>{4c440838-7133-41da-82f3-f2d30af8e77c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Xinput">
+      <UniqueIdentifier>{91f653b3-4acb-49a6-bbaa-80d1ed2893db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\DirectInput\Ds4">
+      <UniqueIdentifier>{27a26497-5af8-47af-aa41-7f48339a0559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dependencies\GL">
+      <UniqueIdentifier>{585d70cf-7d3a-4ab6-b9a5-684ec6b56e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rom">
+      <UniqueIdentifier>{9c1b3955-f032-4865-a53a-92f00675199d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dependencies\GL">
+      <UniqueIdentifier>{09584dd8-93c9-4615-9797-e0ea28d580a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{a42b9e5e-f5f0-4f9e-bfe3-8b1d2e5459c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileSystem">
+      <UniqueIdentifier>{20464b89-b18f-4d3a-9f2a-3a204019ec91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{2a4d5e01-df25-41d8-b7ea-6cfde13c2175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{20203a41-57e3-43f6-94f9-e40c5e761413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Input">
+      <UniqueIdentifier>{342f38ed-3e78-4baf-a840-e0143b0626f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\Bindings">
+      <UniqueIdentifier>{e744649c-43e9-4748-a779-c7498db5ee81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\DirectInput">
+      <UniqueIdentifier>{7dd67997-7a1a-4137-979a-0846dbc6065a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\Keyboard">
+      <UniqueIdentifier>{4aa88358-df29-4976-bc4d-88765db5a8fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\KeyConfig">
+      <UniqueIdentifier>{ecd7bf74-4cc9-43d0-ae79-bece376cc9ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\Mouse">
+      <UniqueIdentifier>{123bcb3a-643c-4dd2-bf99-e84c281c30d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\Xinput">
+      <UniqueIdentifier>{3f586bf9-9bab-49f5-88b9-a33a57fe63be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\DirectInput\Ds4">
+      <UniqueIdentifier>{c6761110-d664-403f-95d5-bb3a45f39532}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Components\EmulatorComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\MainModule.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\SysTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utilities\EnumBitwiseOperations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utilities\Operations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utilities\Stopwatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\FileSystem\ConfigFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\FileSystem\TextFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\PlayerDataManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\FrameRateManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\TouchPanelEmulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\TouchPanelState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\TouchSliderEmulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\TouchSliderState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\JvsButtons.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\InputState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\InputEmulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\Input\InputBufferType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utilities\Math.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utilities\Vec2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utilities\Vec3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\CustomPlayerData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\FastLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\IInputDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Bindings\Binding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Bindings\Ds4Binding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Bindings\IInputBinding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Bindings\KeyboardBinding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\Ds4\Ds4Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\Ds4\Ds4State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\Ds4\DualShock4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\DirectInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\DirectInputDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\DirectInput\DirectInputMouse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Keyboard\Keyboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Keyboard\KeyboardState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\KeyConfig\Config.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\KeyConfig\KeyString.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\KeyConfig\KeyStringHash.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Mouse\Mouse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\Mouse\MouseState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\ComponentsManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\StageManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components\GLComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Components\ScaleComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Depedencies\GL\gl3w.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Dependencies\GL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input\Xinput\Xinput.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Components\Input\InputBufferType.h">
+      <Filter>Header Files\Components\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input\Xinput\XinputState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Components\Input\InputEmulator.h">
+      <Filter>Header Files\Components\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input\Bindings\XinputBinding.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Components\Input\InputState.h">
+      <Filter>Header Files\Components\Input</Filter>
     </ClInclude>
-	<ClInclude Include="src\Components\StageManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Components\Input\JvsButtons.h">
+      <Filter>Header Files\Components\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input\Bindings\MouseBinding.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Components\Input\TouchPanelEmulator.h">
+      <Filter>Header Files\Components\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components\DebugComponent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Components\Input\TouchPanelState.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Input\TouchSliderEmulator.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Input\TouchSliderState.h">
+      <Filter>Header Files\Components\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\CameraController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\ComponentsManager.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\CustomPlayerData.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\DebugComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\EmulatorComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\FastLoader.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\FrameRateManager.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\GameState.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\GLComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\PlayerDataManager.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\ScaleComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\StageManager.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\SysTimer.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileSystem\ConfigFile.h">
+      <Filter>Header Files\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileSystem\TextFile.h">
+      <Filter>Header Files\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\IInputDevice.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\EnumBitwiseOperations.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Math.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Operations.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Stopwatch.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Vec2.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Vec3.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Bindings\Binding.h">
+      <Filter>Header Files\Input\Bindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Bindings\Ds4Binding.h">
+      <Filter>Header Files\Input\Bindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Bindings\KeyboardBinding.h">
+      <Filter>Header Files\Input\Bindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Bindings\MouseBinding.h">
+      <Filter>Header Files\Input\Bindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Bindings\XinputBinding.h">
+      <Filter>Header Files\Input\Bindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\Ds4\Ds4Button.h">
+      <Filter>Header Files\Input\DirectInput\Ds4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\Ds4\Ds4State.h">
+      <Filter>Header Files\Input\DirectInput\Ds4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\Ds4\DualShock4.h">
+      <Filter>Header Files\Input\DirectInput\Ds4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\Controller.h">
+      <Filter>Header Files\Input\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\DirectInput.h">
+      <Filter>Header Files\Input\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\DirectInputDevice.h">
+      <Filter>Header Files\Input\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\DirectInput\DirectInputMouse.h">
+      <Filter>Header Files\Input\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Keyboard\Keyboard.h">
+      <Filter>Header Files\Input\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Keyboard\KeyboardState.h">
+      <Filter>Header Files\Input\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\KeyConfig\Config.h">
+      <Filter>Header Files\Input\KeyConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\KeyConfig\KeyString.h">
+      <Filter>Header Files\Input\KeyConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\KeyConfig\KeyStringHash.h">
+      <Filter>Header Files\Input\KeyConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Mouse\Mouse.h">
+      <Filter>Header Files\Input\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Mouse\MouseState.h">
+      <Filter>Header Files\Input\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Xinput\Xinput.h">
+      <Filter>Header Files\Input\Xinput</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Xinput\XinputState.h">
+      <Filter>Header Files\Input\Xinput</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Bindings\IInputBinding.h">
+      <Filter>Header Files\Input\Bindings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Components\EmulatorComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\MainModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\SysTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utilities\Operations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utilities\Stopwatch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\PlayerData.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FileSystem\ConfigFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FileSystem\TextFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\PlayerDataManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\FrameRateManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\Input\TouchSliderEmulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\Input\TouchSliderState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\Input\TouchPanelEmulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\Input\InputState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\Input\InputEmulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utilities\Math.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utilities\Vec2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utilities\Vec3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\FastLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Bindings\Binding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Bindings\Ds4Binding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Bindings\KeyboardBinding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\DirectInput\Ds4\Ds4State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\DirectInput\Ds4\DualShock4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\DirectInput\Controller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\DirectInput\DirectInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\DirectInput\DirectInputDevice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\DirectInput\DirectInputMouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Keyboard\Keyboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Keyboard\KeyboardState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\KeyConfig\Config.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\KeyConfig\KeyString.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\KeyConfig\KeyStringHash.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Mouse\Mouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\ComponentsManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\StageManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-	 <ClCompile Include="src\Input\Bindings\MouseBinding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\DebugComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\CameraController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\GLComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Components\ScaleComponent.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\Depedencies\imgui\imgui.cpp">
+      <Filter>Source Files\Dependencies\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Depedencies\imgui\imgui_demo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Dependencies\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Depedencies\imgui\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Depedencies\imgui\imgui_impl_win32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Depedencies\imgui\imgui_widgets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Depedencies\imgui\imgui.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Depedencies\imgui\imgui_impl_opengl3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Depedencies\GL\gl3w.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Dependencies\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Depedencies\imgui\imgui_impl_opengl2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Dependencies\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Input\Xinput\Xinput.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\Depedencies\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\Dependencies\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Input\Xinput\XinputState.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\Depedencies\imgui\imgui_impl_win32.cpp">
+      <Filter>Source Files\Dependencies\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Depedencies\imgui\imgui_widgets.cpp">
+      <Filter>Source Files\Dependencies\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\CameraController.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\ComponentsManager.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\DebugComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\EmulatorComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\FrameRateManager.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\GLComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\PlayerDataManager.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\ScaleComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\StageManager.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\SysTimer.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Input\InputEmulator.cpp">
+      <Filter>Source Files\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Input\InputState.cpp">
+      <Filter>Source Files\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Input\TouchPanelEmulator.cpp">
+      <Filter>Source Files\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Input\TouchSliderEmulator.cpp">
+      <Filter>Source Files\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Input\TouchSliderState.cpp">
+      <Filter>Source Files\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileSystem\ConfigFile.cpp">
+      <Filter>Source Files\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileSystem\TextFile.cpp">
+      <Filter>Source Files\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Bindings\Binding.cpp">
+      <Filter>Source Files\Input\Bindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Bindings\Ds4Binding.cpp">
+      <Filter>Source Files\Input\Bindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Bindings\KeyboardBinding.cpp">
+      <Filter>Source Files\Input\Bindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Bindings\MouseBinding.cpp">
+      <Filter>Source Files\Input\Bindings</Filter>
     </ClCompile>
     <ClCompile Include="src\Input\Bindings\XinputBinding.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Input\Bindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\DirectInput\Controller.cpp">
+      <Filter>Source Files\Input\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\DirectInput\DirectInput.cpp">
+      <Filter>Source Files\Input\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\DirectInput\DirectInputDevice.cpp">
+      <Filter>Source Files\Input\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\DirectInput\DirectInputMouse.cpp">
+      <Filter>Source Files\Input\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\DirectInput\Ds4\Ds4State.cpp">
+      <Filter>Source Files\Input\DirectInput\Ds4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\DirectInput\Ds4\DualShock4.cpp">
+      <Filter>Source Files\Input\DirectInput\Ds4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Keyboard\Keyboard.cpp">
+      <Filter>Source Files\Input\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Keyboard\KeyboardState.cpp">
+      <Filter>Source Files\Input\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\KeyConfig\Config.cpp">
+      <Filter>Source Files\Input\KeyConfig</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\KeyConfig\KeyString.cpp">
+      <Filter>Source Files\Input\KeyConfig</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\KeyConfig\KeyStringHash.cpp">
+      <Filter>Source Files\Input\KeyConfig</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Mouse\Mouse.cpp">
+      <Filter>Source Files\Input\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Xinput\Xinput.cpp">
+      <Filter>Source Files\Input\Xinput</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Xinput\XinputState.cpp">
+      <Filter>Source Files\Input\Xinput</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Math.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Operations.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Stopwatch.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Vec2.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Vec3.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Depedencies\GL\gl3w.c">
+      <Filter>Source Files\Dependencies\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\FastLoader.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\PlayerData.h">
+      <Filter>Header Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="rom\keyconfig.txt" />
+    <Text Include="rom\keyconfig.txt">
+      <Filter>Rom</Filter>
+    </Text>
   </ItemGroup>
 </Project>
