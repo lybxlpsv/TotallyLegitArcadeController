@@ -644,22 +644,45 @@ namespace DivaHook::Components
 		{
 			if (!toonShader2)
 			{
-				DWORD oldProtect, bck;
-				VirtualProtect((BYTE*)0x000000014050214F, 2, PAGE_EXECUTE_READWRITE, &oldProtect);
-				*((byte*)0x000000014050214F + 0) = 0x90;
-				*((byte*)0x000000014050214F + 1) = 0x90;
-				VirtualProtect((BYTE*)0x000000014050214F, 2, oldProtect, &bck);
+				
+				{
+					DWORD oldProtect, bck;
+					VirtualProtect((BYTE*)0x000000014050214F, 2, PAGE_EXECUTE_READWRITE, &oldProtect);
+					*((byte*)0x000000014050214F + 0) = 0x90;
+					*((byte*)0x000000014050214F + 1) = 0x90;
+					VirtualProtect((BYTE*)0x000000014050214F, 2, oldProtect, &bck);
+					
+				}
+				
+				{
+					DWORD oldProtect, bck;
+					VirtualProtect((BYTE*)0x0000000140641102, 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+					*((byte*)0x0000000140641102 + 0) = 0x01;
+					VirtualProtect((BYTE*)0x0000000140641102, 1, oldProtect, &bck);
+					
+				}
 				toonShader2 = true;
 			}
 		}
 		else {
 			if (toonShader2)
 			{
-				DWORD oldProtect, bck;
-				VirtualProtect((BYTE*)0x000000014050214F, 2, PAGE_EXECUTE_READWRITE, &oldProtect);
-				*((byte*)0x000000014050214F + 0) = 0x74;
-				*((byte*)0x000000014050214F + 1) = 0x18;
-				VirtualProtect((BYTE*)0x000000014050214F, 2, oldProtect, &bck);
+				
+				{
+					DWORD oldProtect, bck;
+					VirtualProtect((BYTE*)0x000000014050214F, 2, PAGE_EXECUTE_READWRITE, &oldProtect);
+					*((byte*)0x000000014050214F + 0) = 0x74;
+					*((byte*)0x000000014050214F + 1) = 0x18;
+					VirtualProtect((BYTE*)0x000000014050214F, 2, oldProtect, &bck);
+					
+				}
+
+				{
+					DWORD oldProtect, bck;
+					VirtualProtect((BYTE*)0x0000000140641102, 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+					*((byte*)0x0000000140641102 + 0) = 0x00;
+					VirtualProtect((BYTE*)0x0000000140641102, 1, oldProtect, &bck);
+				}
 				toonShader2 = !toonShader2;
 			}
 		}
