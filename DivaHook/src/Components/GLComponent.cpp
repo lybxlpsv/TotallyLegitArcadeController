@@ -504,6 +504,21 @@ namespace DivaHook::Components
 	static bool initialize = false;
 	static int lastmodstate = 0;
 
+	struct sPatch {
+		void* Address;
+		std::initializer_list<uint8_t> Data;
+	};
+
+	void InjectCode(void* address, const std::initializer_list<uint8_t>& data)
+	{
+		const size_t byteCount = data.size() * sizeof(uint8_t);
+
+		DWORD oldProtect;
+		VirtualProtect(address, byteCount, PAGE_EXECUTE_READWRITE, &oldProtect);
+		memcpy(address, data.begin(), byteCount);
+		VirtualProtect(address, byteCount, oldProtect, nullptr);
+	}
+
 	void GLComponent::Update()
 	{
 		if (firstTime > 0) firstTime = firstTime - round(GetElapsedTime());
@@ -644,6 +659,19 @@ namespace DivaHook::Components
 		{
 			if (!toonShader2)
 			{
+				/*
+				std::vector<sPatch> patches = {
+					// Use GLUT_CURSOR_RIGHT_ARROW instead of GLUT_CURSOR_NONE
+					{ (void*)0x000000014050214F, { 0x90, 0x90 } },
+					// Disable the keychip time bomb
+					{ (void*)0x0000000140641102, { 0x01 } }
+				};
+
+				for (auto &patch : patches) // access by reference to avoid copying
+				{
+					InjectCode(patch.Address, patch.Data);
+				}
+				*/
 				
 				{
 					DWORD oldProtect, bck;
@@ -661,12 +689,26 @@ namespace DivaHook::Components
 					VirtualProtect((BYTE*)0x0000000140641102, 1, oldProtect, &bck);
 					
 				}
+				
 				toonShader2 = true;
 			}
 		}
 		else {
 			if (toonShader2)
 			{
+				/*
+				std::vector<sPatch> patches = {
+					// Use GLUT_CURSOR_RIGHT_ARROW instead of GLUT_CURSOR_NONE
+					{ (void*)0x000000014050214F, { 0x74, 0x18 } },
+					// Disable the keychip time bomb
+					{ (void*)0x0000000140641102, { 0x00 } }
+				};
+
+				for (auto &patch : patches) // access by reference to avoid copying
+				{
+					InjectCode(patch.Address, patch.Data);
+				}
+				*/
 				
 				{
 					DWORD oldProtect, bck;
@@ -683,6 +725,7 @@ namespace DivaHook::Components
 					*((byte*)0x0000000140641102 + 0) = 0x00;
 					VirtualProtect((BYTE*)0x0000000140641102, 1, oldProtect, &bck);
 				}
+				
 				toonShader2 = !toonShader2;
 			}
 		}
