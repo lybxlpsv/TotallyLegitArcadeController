@@ -1,8 +1,10 @@
 # This fork is just for testing/experimenting.
-Also most of the new things here is spaghetti-code quality. ![:slowpoke:](https://cdn.discordapp.com/emojis/531734661865668628.png)
+Also most of the new things here are spaghetti-code quality. ![:slowpoke:](https://cdn.discordapp.com/emojis/531734661865668628.png)
 
 
 [Download binaries here (updated every git commit) ](https://ci.appveyor.com/api/projects/lybxlpsv/TotallyLegitArcadeController/artifacts/release.zip?branch=experimental) [![Build status](https://ci.appveyor.com/api/projects/status/github/lybxlpsv/totallylegitarcadecontroller?branch=experimental&svg=true)](https://ci.appveyor.com/project/lybxlpsv/totallylegitarcadecontroller?branch=experimental)
+
+[Download DVA version here (updated every git commit) ](https://ci.appveyor.com/api/projects/lybxlpsv/TotallyLegitArcadeController/artifacts/release-dva.zip?branch=experimental)(for [DIVA Loader](https://github.com/Rayduxz/DIVA-Loader)) [![Build status](https://ci.appveyor.com/api/projects/status/github/lybxlpsv/totallylegitarcadecontroller?branch=experimental&svg=true)](https://ci.appveyor.com/project/lybxlpsv/totallylegitarcadecontroller?branch=experimental)
 
 Any contributions are welcome, including those not on our todo list.
 Currently added features:
