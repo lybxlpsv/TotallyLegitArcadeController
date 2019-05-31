@@ -100,6 +100,42 @@ namespace DivaHook::Components
 		customPlayerData->BtnSeEquip = config.GetIntegerValue("btn_se_equip");
 		customPlayerData->SlideSeEquip = config.GetIntegerValue("slide_se_equip");
 		customPlayerData->ChainslideSeEquip = config.GetIntegerValue("chainslide_se_equip");
+		
+		/*
+		playerData->use_card = config.GetIntegerValue("use_card");
+
+		if (playerData->use_card == 0)
+		{
+			DWORD oldProtect;
+			//enable module selection without card
+			VirtualProtect((void*)0x00000001405C5133, sizeof(byte) * 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+			{
+				*(byte*)(0x00000001405C5133) = 0x74;
+			}
+			VirtualProtect((void*)0x00000001405C5133, sizeof(byte) * 1, oldProtect, &oldProtect);
+
+			VirtualProtect((void*)0x00000001405BC8E7, sizeof(byte) * 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+			{
+				*(byte*)(0x00000001405BC8E7) = 0x74;
+			}
+			VirtualProtect((void*)0x00000001405BC8E7, sizeof(byte) * 1, oldProtect, &oldProtect);
+		}
+		else {
+			DWORD oldProtect;
+			//disable module selection with card
+			VirtualProtect((void*)0x00000001405C5133, sizeof(byte) * 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+			{
+				*(byte*)(0x00000001405C5133) = 0x75;
+			}
+			VirtualProtect((void*)0x00000001405C5133, sizeof(byte) * 1, oldProtect, &oldProtect);
+
+			VirtualProtect((void*)0x00000001405BC8E7, sizeof(byte) * 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+			{
+				*(byte*)(0x00000001405BC8E7) = 0x75;
+			}
+			VirtualProtect((void*)0x00000001405BC8E7, sizeof(byte) * 1, oldProtect, &oldProtect);
+		}
+		*/
 	}
 
 	void PlayerDataManager::ApplyCustomData()
@@ -120,13 +156,24 @@ namespace DivaHook::Components
 		playerData->use_card = 1; // required to allow for module selection
 
 		memset((void *)MODULE_TABLE_START, 0xFF, 128);
-		for (uint64_t i = MODULE_TABLE_START; i <= MODULE_TABLE_END; i++) {
-			memset((void*)ITEM_TABLE_START, 0xFF, 128);
+		memset((void*)ITEM_TABLE_START, 0xFF, 128);
+
+		/*
+		if (playerData->use_card == 0)
+		{
+			//there probably a jn/jne to patch instead but im too lazy rn
+			*(int*)0x00000001411A8A28 = *(int*)0x00000001411A8A10;
+			*(int*)(0x00000001411A8A28 + 4) = *(int*)(0x00000001411A8A28 + 4);
+			*(int*)(0x00000001411A8A28 + 8) = *(int*)(0x00000001411A8A28 + 8);
+			*(int*)(0x00000001411A8A28 + 12) = *(int*)(0x00000001411A8A28 + 12);
+			*(int*)(0x00000001411A8A28 + 16) = *(int*)(0x00000001411A8A28 + 16);
+			*(int*)(0x00000001411A8A28 + 18) = *(int*)(0x00000001411A8A28 + 18);
 		}
-		//1411A8990..1411A8A0C
-		for (uint64_t i = MODULE_TABLE_START; i <= MODULE_TABLE_END; i++) {
-			*((byte*)i) = 0xFF;
-		}
+		*/
+
+		memset((void *)MODULE_TABLE_START, 0xFF, 128);
+
+		memset((void*)ITEM_TABLE_START, 0xFF, 128);
 
 		if (customPlayerData->PlayerName != nullptr)
 		{

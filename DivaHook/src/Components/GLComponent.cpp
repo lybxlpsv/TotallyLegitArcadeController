@@ -96,7 +96,6 @@ namespace DivaHook::Components
 
 	BOOL __stdcall hwglSwapBuffers(_In_ HDC hDc)
 	{
-
 		typedef void ChangeGameState(GameState);
 		ChangeGameState* changeBaseState = (ChangeGameState*)CHANGE_MODE_ADDRESS;
 
