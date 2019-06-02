@@ -54,6 +54,21 @@ namespace DivaHook::Components
 			*(uint8_t*)(SET_DEFAULT_PLAYER_DATA_ADDRESS) = RET_OPCODE;
 		}
 		VirtualProtect((void*)SET_DEFAULT_PLAYER_DATA_ADDRESS, sizeof(uint8_t), oldProtect, &oldProtect);
+		
+		// allow extra game modes (wip -- it disappears after selection but works)
+		{
+			VirtualProtect((void*)MODESEL_DECISION_EXIT, sizeof(uint8_t)*5, PAGE_EXECUTE_READWRITE, &oldProtect);
+			{
+				memset((void*)MODESEL_DECISION_EXIT, NOP_OPCODE, 5);
+			}
+			VirtualProtect((void*)MODESEL_DECISION_EXIT, sizeof(uint8_t)*5, oldProtect, &oldProtect);
+
+			VirtualProtect((void*)MODESEL_DECISION_ALLOW, sizeof(uint8_t)*2, PAGE_EXECUTE_READWRITE, &oldProtect);
+			{
+				memset((void*)MODESEL_DECISION_ALLOW, NOP_OPCODE, 2);
+			}
+			VirtualProtect((void*)MODESEL_DECISION_ALLOW, sizeof(uint8_t)*2, oldProtect, &oldProtect);
+		}
 	}
 
 	void PlayerDataManager::LoadConfig()
