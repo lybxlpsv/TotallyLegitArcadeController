@@ -50,3 +50,6 @@ constexpr uint64_t MODULE_TABLE_START							= PLAYER_DATA_ADDRESS + 0x140;
 constexpr uint64_t MODULE_TABLE_END								= MODULE_TABLE_START + 128;
 constexpr uint64_t ITEM_TABLE_START								= PLAYER_DATA_ADDRESS + 0x2B8;
 constexpr uint64_t ITEM_TABLE_END								= ITEM_TABLE_START + 128;
+
+constexpr uint64_t MODESEL_DECISION_EXIT = 0x00000001405CB1B3; // 5 bytes to nop
+constexpr uint64_t MODESEL_DECISION_ALLOW = 0x00000001405CA0F5; // 2 bytes to nop
